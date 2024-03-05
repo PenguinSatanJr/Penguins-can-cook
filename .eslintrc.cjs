@@ -1,4 +1,10 @@
 module.exports = {
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
   root: true,
   env: { browser: true, es2020: true },
   extends: [
@@ -25,6 +31,7 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'arrow-body-style': ['error', 'never'],
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',

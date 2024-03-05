@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react-jsx",
     "composite": true,
     "skipLibCheck": true,
     "module": "ESNext",
@@ -8,6 +9,7 @@
     "strict": true
   },
   "include": [
+    "src",
     "vite.config.ts"
   ]
 }
