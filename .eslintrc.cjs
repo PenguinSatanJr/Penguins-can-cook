@@ -1,8 +1,8 @@
 module.exports = {
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
   },
   root: true,
@@ -31,7 +31,7 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'arrow-body-style': ['error', 'never'],
+    'arrow-body-style': ['error', 'as-needed'],
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
@@ -41,6 +41,5 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
-
   },
 };

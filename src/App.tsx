@@ -1,7 +1,10 @@
+import { IntlProvider } from 'react-intl';
+import MenuPage from './components/menu-page';
+
 const App = () => (
-  <div>
-    <p>Placeholder for the list</p>
-  </div>
+  <IntlProvider locale="en" defaultLocale="en">
+    <MenuPage />
+  </IntlProvider>
 );
 
 export default App;
