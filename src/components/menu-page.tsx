@@ -20,7 +20,7 @@ const MenuPage = () => {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const [recipes, setRecipes] = useState([
+  const [recipes] = useState([
     {
       id: recipesExamples[0].id,
       title: recipesExamples[0].title,
