@@ -8,7 +8,7 @@ type RecipeListProps = {
 };
 
 const RecipeList = ({ items, isEditing }: RecipeListProps) => (
-  <MuiList sx={{ width: '100%', bgcolor: 'background.paper', paddingY: 0 }}>
+  <MuiList sx={{ width: '100%', paddingY: 0 }}>
     {items.map((item, index, items) => (
       <RecipeListItem
         key={item.id}

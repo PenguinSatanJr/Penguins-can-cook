@@ -1,4 +1,4 @@
-import { IconButton, Paper, Stack, Typography } from '@mui/material';
+import { IconButton, Paper, Stack, Typography, useTheme } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
 import PageContainer from './page-container';
@@ -41,9 +41,13 @@ const MenuPage = () => {
 
   const onEditButtonClick = () => setIsEditing(!isEditing);
 
+  const {
+    palette: { primary },
+  } = useTheme();
+
   return (
     <PageContainer maxWidth={'sm'}>
-      <Paper>
+      <Paper sx={{ backgroundColor: primary.main }}>
         <Stack
           direction="row"
           sx={{ paddingTop: 1, paddingLeft: 2 }}
