@@ -1,72 +1,35 @@
-import { IconButton, Paper, Stack, Typography, useTheme } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import { useState } from 'react';
+import { WeekDay } from 'types';
+import DailyMenu from './daily-menu';
 import PageContainer from './page-container';
-import RecipeList from './recipe-list';
-import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
-import { exampleData } from '../test-data';
-
-const messages = defineMessages({
-  editButtonLabel: {
-    id: 'recipePage.editButtonLabel',
-    defaultMessage: 'Edit',
-  },
-});
-
-const recipesExamples = exampleData.results;
+import { Stack } from '@mui/material';
+import { menu } from 'test-data';
 
 const MenuPage = () => {
-  const intl = useIntl();
+  const weekdays = Object.values(WeekDay);
 
-  const [isEditing, setIsEditing] = useState(false);
-
-  const [recipes] = useState([
-    {
-      id: recipesExamples[0].id,
-      title: recipesExamples[0].title,
-      image: recipesExamples[0].image,
-      description:
-        'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ',
-      ingredients: ['test'],
-    },
-    {
-      id: recipesExamples[1].id,
-      title: recipesExamples[1].title,
-      image: recipesExamples[1].image,
-      description:
-        'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ',
-      ingredients: ['test'],
-    },
-  ]);
-
-  const onEditButtonClick = () => setIsEditing(!isEditing);
-
-  const {
-    palette: { primary },
-  } = useTheme();
+  const menuList = weekdays.map((weekday) => ({
+    weekday,
+    menu,
+  }));
 
   return (
-    <PageContainer maxWidth={'sm'}>
-      <Paper sx={{ backgroundColor: primary.main }}>
-        <Stack
-          direction="row"
-          sx={{ paddingTop: 1, paddingLeft: 2 }}
-          justifyContent="center"
-          spacing={2}
-        >
-          <Typography variant="h4">
-            <FormattedMessage id="recipePage.title" defaultMessage={'Menu'} />
-          </Typography>
-          <IconButton
-            aria-label={intl.formatMessage(messages.editButtonLabel)}
-            onClick={onEditButtonClick}
-            disabled={recipes.length === 0}
-          >
-            <EditIcon sx={{ fontSize: 20 }} />
-          </IconButton>
-        </Stack>
-        <RecipeList items={recipes} isEditing={isEditing} />
-      </Paper>
+    <PageContainer>
+      <Stack
+        direction="row"
+        spacing={4}
+        useFlexGap
+        flexWrap="wrap"
+        justifyContent={'center'}
+      >
+        {menuList.map(({ weekday, menu }, index) => (
+          <DailyMenu
+            key={weekday}
+            weekday={weekday}
+            menu={menu}
+            timeout={(index + 1) * 300}
+          />
+        ))}
+      </Stack>
     </PageContainer>
   );
 };

@@ -1,3 +1,15 @@
+declare module '@mui/material/styles' {
+  interface Palette {
+    recipe: Palette['primary'];
+    recipe_secondary: Palette['primary'];
+  }
+
+  interface PaletteOptions {
+    recipe?: PaletteOptions['primary'];
+    recipe_secondary?: PaletteOptions['primary'];
+  }
+}
+
 import { alpha, createTheme, getContrastRatio } from '@mui/material';
 
 export type Color =

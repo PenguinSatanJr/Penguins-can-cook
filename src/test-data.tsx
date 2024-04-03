@@ -1,3 +1,5 @@
+import { MealTime, Menu } from 'types';
+
 export const exampleData = {
   results: [
     {
@@ -65,3 +67,33 @@ export const exampleData = {
   number: 10,
   totalResults: 633,
 };
+
+const getRecipe = (index: number) => {
+  const { results } = exampleData;
+
+  return {
+    id: results[index].id,
+    title: results[index].title,
+    description:
+      'lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet ',
+    image: results[index].image,
+    ingredients: ['test', 'test', 'test'],
+  };
+};
+
+const breakfast = {
+  mealTime: MealTime.Breakfast,
+  recipes: [getRecipe(0), getRecipe(1)],
+};
+
+const lunch = {
+  mealTime: MealTime.Lunch,
+  recipes: [getRecipe(2), getRecipe(3)],
+};
+
+const dinner = {
+  mealTime: MealTime.Dinner,
+  recipes: [getRecipe(4), getRecipe(5)],
+};
+
+export const menu: Menu = [breakfast, lunch, dinner];

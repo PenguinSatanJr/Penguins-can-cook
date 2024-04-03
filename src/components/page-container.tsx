@@ -5,10 +5,10 @@ type PageContainerProps = {
   maxWidth?: ContainerProps['maxWidth'];
 };
 
-const pageContainerSxProps = { paddingTop: '30vh', marginBottom: 16 };
+const pageContainerSxProps = { paddingTop: '10vh', paddingBottom: 8 };
 
-const PageContainer = ({ children, maxWidth = 'md' }: PageContainerProps) => (
-  <Container maxWidth={maxWidth} sx={pageContainerSxProps}>
+const PageContainer = ({ children, maxWidth = 'xl' }: PageContainerProps) => (
+  <Container disableGutters maxWidth={maxWidth} sx={pageContainerSxProps}>
     {children}
   </Container>
 );

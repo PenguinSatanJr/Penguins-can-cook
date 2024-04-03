@@ -1,48 +1,38 @@
-import {
-  Avatar,
-  IconButton,
-  ListItemAvatar,
-  ListItemText,
-  ListItem as MuiListItem,
-  Stack,
-} from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useIntl } from 'react-intl';
 
 type RecipeListItemProps = {
   title: string;
   description: string;
-  image?: string;
-  divider?: boolean;
-  isEditing?: boolean;
+  color?: string;
+  square?: boolean;
 };
 
 const RecipeListItem = ({
   title,
   description,
-  image = 'icons/default-dish.svg',
-  divider = true,
-  isEditing = true,
-}: RecipeListItemProps) => (
-  <Stack direction="row" spacing={2}>
-    <MuiListItem divider={divider}>
-      <ListItemAvatar>
-        <Avatar
-          sx={{ height: '60px', width: '60px' }}
-          variant="rounded"
-          alt={title}
-          src={image}
-        />
-      </ListItemAvatar>
-      <ListItemText secondary={description} sx={{ marginLeft: 1 }}>
-        {title}
-      </ListItemText>
-      {isEditing && (
-        <IconButton aria-label="edit" disableRipple>
-          <CloseIcon />
-        </IconButton>
-      )}
-    </MuiListItem>
-  </Stack>
-);
+  color,
+  square = false,
+}: RecipeListItemProps) => {
+  const intl = useIntl();
+
+  return (
+    <Accordion sx={{ backgroundColor: color }} elevation={0} square={square}>
+      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        {intl.formatMessage({
+          id: 'recipeListItem.title',
+          defaultMessage: title,
+        })}
+      </AccordionSummary>
+      <AccordionDetails>
+        {intl.formatMessage({
+          id: 'recipeListItem.description',
+          defaultMessage: description,
+        })}
+      </AccordionDetails>
+    </Accordion>
+  );
+};
 
 export default RecipeListItem;
